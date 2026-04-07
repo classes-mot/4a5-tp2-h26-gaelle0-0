@@ -1,18 +1,27 @@
 import express from "express";
-
+import { check } from "express-validator";
 import usersController from "../controllers/users-controller.js";
+
 const router = express.Router();
 
-// Middleware pour obtenir toutes les tâches
-//liste de users
-router.get("/", usersController.getUsers);
+router.post(
+  "/inscription",
+  [
+    check("nom").not().isEmpty(),
+    check("email").isEmail().normalizeEmail(),
+    check("motDePasse").isLength({ min: 6 }),
+  ],
+  usersController.inscription,
+);
 
-router.get("/profile/:uid", usersController.getUserById);
-
-router.post("/register", usersController.registerUser);
-// list
-router.post("/login", usersController.login);
-
-router.patch("/profile/:uid", usersController.updateUserById);
+// POST /api/users/connexion
+router.post(
+  "/connexion",
+  [
+    check("email").normalizeEmail().isEmail(),
+    check("motDePasse").not().isEmpty(),
+  ],
+  usersController.connexion,
+);
 
 export default router;

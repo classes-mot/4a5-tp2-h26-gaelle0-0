@@ -1,28 +1,7 @@
 import User from "../models/user.js";
 import jwt from "jsonwebtoken";
-import { v4 as uuid } from "uuid";
 import bcrypt from "bcryptjs";
-
-let MOCK_USERS = [
-  {
-    id: "1",
-    nom: "Alice",
-    email: "alice@example.com",
-    motDePasse: "password123",
-  },
-  {
-    id: "2",
-    nom: "Bob",
-    email: "bob@example.com",
-    motDePasse: "password456",
-  },
-];
-
-const getUser = (req, res, next) => {
-  setTimeout(() => {
-    res.json({ users: MOCK_USERS });
-  }, 3000);
-};
+import HttpError from "../util/http-error.js";
 
 //POST /api/users/inscription
 const inscription = async (req, res, next) => {
@@ -57,22 +36,21 @@ const inscription = async (req, res, next) => {
   try {
     await newUser.save();
   } catch (error) {
-    return res.status(500).json({ message: "Erreur d'inscription" });
+    return res.status(500).json({ message: "Erreur d'inscription11" });
   }
 
   //générer un token JWT
   let token;
   try {
     token = jwt.sign(
-      { userId: newUser.id, email: newUser.email },
-      process.env.JWT_SECRET,
+      { userId: newUser._id, email: newUser.email },
+      "cleSuperSecrete!",
       { expiresIn: "1h" },
     );
   } catch (error) {
-    return res.status(500).json({ message: "Erreur d'inscription" });
+    return res.status(500).json({ message: "Erreur d'inscriptionvv" });
   }
 
-  MOCK_USERS.push(newUser);
   res.status(201).json({ user: newUser, email: newUser.email, token: token });
 };
 
@@ -111,8 +89,8 @@ const connexion = async (req, res, next) => {
   let token;
   try {
     token = jwt.sign(
-      { userId: utilisateurExiste.id, email: utilisateurExiste.email },
-      process.env.JWT_SECRET,
+      { userId: utilisateurExiste._id, email: utilisateurExiste.email },
+      "cleSuperSecrete!",
       { expiresIn: "1h" },
     );
   } catch (error) {
@@ -120,10 +98,10 @@ const connexion = async (req, res, next) => {
   }
 
   res.json({
-    userId: utilisateurExiste.id,
+    userId: utilisateurExiste._id,
     email: utilisateurExiste.email,
     token: token,
   });
 };
 
-export default { getUser, inscription, connexion };
+export default { inscription, connexion };

@@ -93,7 +93,7 @@ const deleteGame = async (req, res, next) => {
     return next(new HttpError("Jeu non trouvé", 404));
   }
   try {
-    await game.remove();
+    await game.deleteOne();
   } catch (error) {
     return next(new HttpError("Erreur de suppression du jeu", 500));
   }

@@ -30,8 +30,8 @@ app.use((error, req, res, next) => {
 // Connexion BD + démarrage serveur
 connectDB();
 
-app.listen(5000, () => {
-  console.log("Serveur démarré sur le port 5000 ");
+app.listen(3001, () => {
+  console.log("Serveur démarré sur le port 3001");
 });
 
 export default app;

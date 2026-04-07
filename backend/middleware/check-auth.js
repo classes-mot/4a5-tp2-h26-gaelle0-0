@@ -7,7 +7,7 @@ const checkAuth = (req, res, next) => {
     if (!token) {
       throw new Error("Authentication failed");
     }
-    const decodedToken = jwt.verify(token, "votre_clé_secrète");
+    const decodedToken = jwt.verify(token, "cleSuperSecrete!");
     req.userData = { userId: decodedToken.userId };
     next();
   } catch (error) {

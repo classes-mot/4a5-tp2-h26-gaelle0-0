@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "c0031781-7a3b-4e0b-88a9-81603c2f3697",
+    "name": "Tp2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52765746",
+    "_collection_link": "https://go.postman.co/collection/52765746-c0031781-7a3b-4e0b-88a9-81603c2f3697?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "/api/users",
+      "item": [
+        {
+          "name": "Inscription (USER)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nom\": \"test\",\r\n    \"email\": \"teste67@example.com\",\r\n    \"motDePasse\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/users/inscription",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "api",
+                "users",
+                "inscription"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Connexion (USERS)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"teste67@example.com\",\r\n    \"motDePasse\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/users/connexion",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "api",
+                "users",
+                "connexion"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/api/jeux",
+      "item": [
+        {
+          "name": "Add Jeu",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0ODU3YmU4M2IwMzIyMmRkMjg3YWMiLCJlbWFpbCI6InRlc3RlNjdAZXhhbXBsZS5jb20iLCJpYXQiOjE3NzU1MzYzNDYsImV4cCI6MTc3NTUzOTk0Nn0.khizTug6GY0oJcb1OuixM6jLFhLpoZtM-z-FE1JhFiE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nom\": \"Catan\",\r\n    \"categorie\": \"Stratégie\",\r\n    \"duree\": 90,\r\n    \"nbJoueurs\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/jeux",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "api",
+                "jeux"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Jeux",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Get Jeu (ID)",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "MAJ Jeu",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0ODU3YmU4M2IwMzIyMmRkMjg3YWMiLCJlbWFpbCI6InRlc3RlNjdAZXhhbXBsZS5jb20iLCJpYXQiOjE3NzU1MzYzNDYsImV4cCI6MTc3NTUzOTk0Nn0.khizTug6GY0oJcb1OuixM6jLFhLpoZtM-z-FE1JhFiE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nom\": \"Catan Deluxe\",\r\n    \"categorie\": \"Stratégie\",\r\n    \"duree\": 120,\r\n    \"nbJoueurs\": 6\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/jeux/69d4893cfa12584d32b8d631",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "api",
+                "jeux",
+                "69d4893cfa12584d32b8d631"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Supprimer Jeu",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0ODU3YmU4M2IwMzIyMmRkMjg3YWMiLCJlbWFpbCI6InRlc3RlNjdAZXhhbXBsZS5jb20iLCJpYXQiOjE3NzU1MzYzNDYsImV4cCI6MTc3NTUzOTk0Nn0.khizTug6GY0oJcb1OuixM6jLFhLpoZtM-z-FE1JhFiE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/api/jeux/69d4893cfa12584d32b8d631",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "api",
+                "jeux",
+                "69d4893cfa12584d32b8d631"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
